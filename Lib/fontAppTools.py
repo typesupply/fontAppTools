@@ -2,7 +2,10 @@ def characterToGlyphName(c, cmap):
     try:
         c = unicode(c)
         v = ord(c)
-        return cmap.get(v)
+        v = cmap.get(v)
+        if isinstance(v, list):
+            v = v[0]
+        return v
     except UnicodeDecodeError:
         return None
 
